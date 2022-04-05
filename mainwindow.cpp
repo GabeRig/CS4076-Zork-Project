@@ -11,7 +11,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     ui->setupUi(this);
 
     ui->textEdit_2->setTextColor(QColor("red"));
-    ui->textEdit_3->setTextColor(QColor("green"));
+    ui->textEdit_3->setTextColor(QColor("red"));
 
     ui->textEdit->append(QString::fromStdString(zork->printWelcome() + "\n"));
     printCharacterStats();
