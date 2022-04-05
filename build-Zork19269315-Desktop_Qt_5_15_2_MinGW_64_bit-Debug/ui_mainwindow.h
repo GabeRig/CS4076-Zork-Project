@@ -39,6 +39,7 @@ public:
     QListWidget *listWidget;
     QPushButton *xButton;
     QPushButton *yButton;
+    QTextEdit *textEdit_4;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -152,6 +153,15 @@ public:
         yButton->setStyleSheet(QString::fromUtf8("\n"
 "color: rgb(186, 186, 186);\n"
 "border: none;"));
+        textEdit_4 = new QTextEdit(centralwidget);
+        textEdit_4->setObjectName(QString::fromUtf8("textEdit_4"));
+        textEdit_4->setGeometry(QRect(89, 71, 253, 137));
+        textEdit_4->viewport()->setProperty("cursor", QVariant(QCursor(Qt::PointingHandCursor)));
+        textEdit_4->setStyleSheet(QString::fromUtf8("background-color: rgba(40, 60, 30, 0);\n"
+"color: rgba(115, 115, 115, 0);\n"
+"border: none;\n"
+""));
+        textEdit_4->setReadOnly(true);
         MainWindow->setCentralWidget(centralwidget);
         Background->raise();
         upButton->raise();
@@ -168,6 +178,7 @@ public:
         listWidget->raise();
         xButton->raise();
         yButton->raise();
+        textEdit_4->raise();
 
         retranslateUi(MainWindow);
 
@@ -188,6 +199,11 @@ public:
         Background->setText(QString());
         xButton->setText(QCoreApplication::translate("MainWindow", "X", nullptr));
         yButton->setText(QCoreApplication::translate("MainWindow", "Y", nullptr));
+        textEdit_4->setHtml(QCoreApplication::translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:36pt; color:#737373;\">PAUSED</span></p></body></html>", nullptr));
     } // retranslateUi
 
 };

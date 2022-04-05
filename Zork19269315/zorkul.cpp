@@ -4,6 +4,7 @@
 
 using namespace std;
 #include "zorkul.h"
+#include "room.h"
 
 ZorkUL::ZorkUL() {
     createRooms();
@@ -14,16 +15,19 @@ void ZorkUL::createRooms() {
 
     Room *a, *b, *c, *d, *e, *f, *g, *h, *i, *j;
 
+
     a = new Room("Hallway");
         a->addItem(new Item("Jacket"));
     b = new Room("Bedroom");
         b->addItem(new Item("Pillow"));
     c = new Room("Front Pathway");
+        c->addItem(new Item("Shovel"));
     d = new Room("Porch");
+        d->addItem(new Item("Hat"));
     e = new Room("Study");
         e->addItem(new Item("Book"));
     f = new Room("Utility Room");
-        c->addItem(new Item("Brush"));
+        f->addItem(new Item("Brush"));
     g = new Room("Bathroom");
         g->addItem(new Item("Soap"));
     h = new Room("Kitchen");
@@ -82,10 +86,10 @@ string ZorkUL::printHelp() {
     output += "---------------------------\n";
     output += "A   Grab Item\n";
     output += "B   Drop Item\n";
-    output += "X   Cycle through Item\n";
+    output += "X   Character\n";
     output += "Y   Map\n";
     output += "---------------------------\n";
-    output += "+  Character Screen\n";
+    output += "+  Pause\n";
     output += "-    Help";
     return output;
 }
@@ -161,6 +165,3 @@ string ZorkUL::viewItems() {
 Room ZorkUL::getCurrentRoom() {
     return *currentRoom;
 }
-
-
-

@@ -23,6 +23,7 @@ private:
 public:
     ZorkUL();
     void play();
+    char roomA();
     string printWelcome();
     string printHelp();
     string printEnd();

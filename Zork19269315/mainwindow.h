@@ -32,6 +32,7 @@ private:
     Ui::MainWindow *ui;
     ZorkUL *zork = new ZorkUL();
     Character character = *new Character("Player");
+    int pause;
     bool putInInventory;
     void goRoom(string direction);
     void listItems(vector<Item> items, QString description);

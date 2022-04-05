@@ -52,33 +52,6 @@ void MainWindow::disableButtons() {
     ui->listWidget->setEnabled(false);
 }
 
-void MainWindow::reset() {
-    enableButtons();
-    character.health = 5;
-    character.stamina = 5;
-    ui->textEdit_2->setText(QString::fromStdString(displayHealth()));
-    ui->textEdit_3->setText(QString::fromStdString(displayStamina()));
-
-/*
-    addItem(a.itemsInRoom, m);
-    character.removeItem(m);
-    addItem(b.itemsInRoom, m);
-    character.removeItem(m);
-    addItem(a.itemsInRoom, m);
-    character.removeItem(m);
-    addItem(a.itemsInRoom, m);
-    character.removeItem(m);
-    addItem(a.itemsInRoom, m);
-    character.removeItem(m);
-    addItem(a.itemsInRoom, m);
-    character.removeItem(m);
-
-    ui->listWidget->clear();
-
-    currentRoom = c;
-*/
-}
-
 void MainWindow::on_upButton_clicked() { // 1
     goRoom("north");
 }
@@ -108,7 +81,18 @@ void MainWindow::on_yButton_clicked() { // 10
 }
 
 void MainWindow::on_startButton_clicked() { // 8
-    reset();
+        if (pause == 1) {
+            enableButtons();
+            pause = 0;
+            ui->textEdit_4->setStyleSheet("QTextEdit { background-color : rgba(40, 60, 30, 0); }");
+            ui->textEdit_4->setText("");
+        }
+        else {
+            disableButtons();
+            pause = 1;
+            ui->textEdit_4->setStyleSheet("QTextEdit { background-color : rgba(40, 60, 30, 200); }");
+            ui->textEdit_4->setHtml("<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:36pt; color:#737373;\">PAUSED</span></p></body></html>");
+        }
 }
 void MainWindow::on_selectButton_clicked() { // 7
     ui->textEdit->setText(QString::fromStdString(zork->printHelp() + "\n"));
