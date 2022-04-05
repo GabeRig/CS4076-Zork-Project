@@ -65,6 +65,8 @@ public:
 "color: rgb(0, 0, 0);\n"
 "border: none;\n"
 ""));
+        textEdit->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+        textEdit->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
         textEdit->setReadOnly(true);
         bButton = new QPushButton(centralwidget);
         bButton->setObjectName(QString::fromUtf8("bButton"));

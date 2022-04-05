@@ -73,7 +73,7 @@ void ZorkUL::createRooms() {
 // If this command ends the ZorkUL game, true is returned, otherwise false is returned.
 
 string ZorkUL::printWelcome() {
-    return "Welcome to the game. \nPress info for help\n You find yourself on a worn path in front of a wooden door.\n" + currentRoom->longDescription();
+    return "Welcome to Zork. \n \nPress - for help \nYou find yourself on a worn path in front of a wooden door.\n" + currentRoom->longDescription();
 }
 
 string ZorkUL::printEnd() {
@@ -81,7 +81,17 @@ string ZorkUL::printEnd() {
 }
 
 string ZorkUL::printHelp() {
-    return "Press the directional buttons to travel, A button to pick up items, B button to ";
+    string output;
+    output += "Dpad  Movement\n";
+    output += "---------------------------\n";
+    output += "A   Grab Item\n";
+    output += "B   Drop Item\n";
+    output += "X   Cycle through Item\n";
+    output += "Y   Map\n";
+    output += "---------------------------\n";
+    output += "+  Character Screen\n";
+    output += "-    Help";
+    return output;
 }
 
 string ZorkUL::teleport() {
@@ -97,19 +107,15 @@ string ZorkUL::teleport() {
 
 string ZorkUL::map() {
     string output;
-    output += "             [Garden]            ";
-    output += "                |                ";
-    output += "                |                ";
-    output += "[Kitchen] - [Utility]  [Bathroom]";
-    output += "    |           |           |    ";
-    output += "    |           |           |    ";
-    output += "[      ]    [Hallway] - [Bedroom]";
-    output += "[Dining]        |                ";
-    output += "[ Room ]        |                ";
-    output += "[      ] --- [Porch] --- [Study] ";
-    output += "                |                ";
-    output += "                |                ";
-    output += "         [Front Pathway]         ";
+    output += "          [ ]\n";
+    output += "           |\n";
+    output += "[ ] --- [ ] --- [ ]\n";
+    output += " |        |        |\n";
+    output += " |       [ ] --- [ ]\n";
+    output += " |        |\n";
+    output += "[ ] --- [ ] --- [ ]\n";
+    output += "          |\n";
+    output += "         [ ]";
     return output;
     /*
                [j]
@@ -125,6 +131,20 @@ string ZorkUL::map() {
                 |
                 |
                [c]
+
+                 [Garden]
+                    |
+                    |
+    [Kitchen] - [Utility]  [Bathroom]
+        |           |           |
+        |           |           |
+    [      ]    [Hallway] - [Bedroom]
+    [Dining]        |
+    [ Room ]        |
+    [      ] --- [Porch] --- [Study]
+                    |
+                    |
+             [Front Pathway]
     */
 }
 

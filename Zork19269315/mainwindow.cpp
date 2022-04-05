@@ -13,7 +13,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     ui->textEdit_2->setTextColor(QColor("red"));
     ui->textEdit_3->setTextColor(QColor("red"));
 
-    ui->textEdit->append(QString::fromStdString(zork->printWelcome() + "\n"));
+    ui->textEdit->setText(QString::fromStdString(zork->printWelcome() + "\n"));
     printCharacterStats();
 }
 
@@ -49,7 +49,7 @@ void MainWindow::on_xButton_clicked() { // 9
     listItems(items, "character");
 }
 void MainWindow::on_yButton_clicked() { // 10
-    ui->textEdit->setText("Pressed Y");
+    ui->textEdit->setText(QString::fromStdString(zork->map() + "\n"));
 }
 
 void MainWindow::on_startButton_clicked() { // 8
@@ -57,7 +57,7 @@ void MainWindow::on_startButton_clicked() { // 8
 
 }
 void MainWindow::on_selectButton_clicked() { // 7
-    ui->textEdit->setText("Pressed Select");
+    ui->textEdit->setText(QString::fromStdString(zork->printHelp() + "\n"));
 }
 
 void MainWindow::on_listWidget_itemDoubleClicked(QListWidgetItem*item) {
@@ -73,7 +73,7 @@ void MainWindow::on_listWidget_itemDoubleClicked(QListWidgetItem*item) {
         addItem(character.itemsInCharacter, m);
         character.addItem(&m);
         r.removeItem(m);
-        ui->textEdit->append(QString::fromStdString(description + " has been added to your inventory.\n"));
+        ui->textEdit->setText(QString::fromStdString(description + " has been added to your inventory.\n"));
         overencumberedTest();
     }
     else {
@@ -81,7 +81,7 @@ void MainWindow::on_listWidget_itemDoubleClicked(QListWidgetItem*item) {
         Room r = zork->getCurrentRoom();
         addItem(r.itemsInRoom, m);
         character.removeItem(m);
-        ui->textEdit->append(QString::fromStdString(description + " has been removed from yuor inventory.\n"));
+        ui->textEdit->setText(QString::fromStdString(description + " has been removed from yuor inventory.\n"));
     }
 }
 
@@ -95,7 +95,7 @@ void MainWindow::addItemsToListWidget(vector<Item> items) {
             }
         }
         else {
-            ui->textEdit->append(QString::fromStdString("There are no items in the room."));
+            ui->textEdit->setText(QString::fromStdString("There are no items in the room."));
         }
     }
     else {
@@ -105,7 +105,7 @@ void MainWindow::addItemsToListWidget(vector<Item> items) {
             }
         }
         else {
-            ui->textEdit->append(QString::fromStdString("There are no items in " + character.shortDescription() + "'s inventory.\n"));
+            ui->textEdit->setText(QString::fromStdString("There are no items in " + character.shortDescription() + "'s inventory.\n"));
         }
     }
 }
@@ -144,10 +144,10 @@ void MainWindow::goRoom(string direction) {
         printCharacterStats();
 
         if (direction == "teleport") {
-            ui->textEdit->append(QString::fromStdString(zork->teleport() + "\n"));
+            ui->textEdit->setText(QString::fromStdString(zork->teleport() + "\n"));
         }
         else {
-            ui->textEdit->append(QString::fromStdString(zork->go(direction) + "\n"));
+            ui->textEdit->setText(QString::fromStdString(zork->go(direction) + "\n"));
 
             if (zork->getCurrentRoom().description == "j") {
                 endGameState("entered the winning Room", "won");
@@ -164,7 +164,7 @@ void MainWindow::listItems(vector<Item> items, QString description) {
         addItemsToListWidget(items);
     }
     else {
-        ui->textEdit->append("No " + description + " items could be found.\n");
+        ui->textEdit->setText("No " + description + " items could be found.\n");
     }
 }
 
