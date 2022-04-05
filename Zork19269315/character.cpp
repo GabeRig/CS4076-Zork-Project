@@ -5,7 +5,7 @@ Character::Character(string description) {
     itemsInCharacter.empty();
     this->description = description;
     stamina = 5;
-    health = 2;
+    health = 5;
 }
 
 void Character::addItem(Item *item) {
@@ -27,12 +27,12 @@ string Character::shortDescription() {
 }
 
 string Character::longDescription() {
-    string output = "";
+    string output;
 
     output += this->description;
-    output += "\n   O";
+    output += "\n\n   o";
     output += "\n   T";
-    output += "\n   ^";
+    output += "\n   ^\n";
 
     if (itemsInCharacter.empty()) {
         output += "\nYou are carrying no items.";
@@ -96,7 +96,7 @@ void Character::decrementStamina() {
     stamina--;
 
     if (stamina < 0 && health > 1) {
-        setStamina(10);
+        setStamina(5);
         decrementHealth();
     }
 }

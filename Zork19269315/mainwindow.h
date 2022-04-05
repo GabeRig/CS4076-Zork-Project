@@ -35,6 +35,9 @@ private:
     bool putInInventory;
     void goRoom(string direction);
     void listItems(vector<Item> items, QString description);
+    void disableButtons();
+    void enableButtons();
+    void reset();
 
 private slots:
     void on_upButton_clicked();

@@ -15,32 +15,23 @@ void ZorkUL::createRooms() {
     Room *a, *b, *c, *d, *e, *f, *g, *h, *i, *j;
 
     a = new Room("Hallway");
-        a->addItem(new Item("Jacket", 1, 11));
+        a->addItem(new Item("Jacket"));
     b = new Room("Bedroom");
-        b->addItem(new Item("Pillow", 1, 11));
-        b->addItem(new Item("Plushie", 2, 22));
+        b->addItem(new Item("Pillow"));
     c = new Room("Front Pathway");
-        c->addItem(new Item("Plant", 3, 33));
     d = new Room("Porch");
-        d->addItem(new Item("Shoes", 4, 44));
     e = new Room("Study");
-        e->addItem(new Item("Glasses", 4, 44));
-    f = new Room("Utility");
-        f->addItem(new Item("Vacuum", 4, 44));
-        c->addItem(new Item("Brush", 4, 44));
+        e->addItem(new Item("Book"));
+    f = new Room("Utility Room");
+        c->addItem(new Item("Brush"));
     g = new Room("Bathroom");
-        g->addItem(new Item("Soap", 4, 44));
-        g->addItem(new Item("Towel", 4, 44));
+        g->addItem(new Item("Soap"));
     h = new Room("Kitchen");
-        h->addItem(new Item("Knife", 4, 44));
-        h->addItem(new Item("Spatula", 4, 44));
+        h->addItem(new Item("Knife"));
     i = new Room("Dining Room");
-        i->addItem(new Item("Bowl", 4, 44));
-        i->addItem(new Item("Bread", 4, 44));
-        i->addItem(new Item("Spoon", 4, 44));
+        i->addItem(new Item("Bowl"));
     j = new Room("Garden");
         j->addItem(new Item("Ball"));
-        j->addItem(new Item("Shovel"));
 
 //             (N,    E,    S,    W)
     a->setExits(f,    b,    d,    NULL);
@@ -73,7 +64,12 @@ void ZorkUL::createRooms() {
 // If this command ends the ZorkUL game, true is returned, otherwise false is returned.
 
 string ZorkUL::printWelcome() {
-    return "Welcome to Zork. \n \nPress - for help \nYou find yourself on a worn path in front of a wooden door.\n" + currentRoom->longDescription();
+    string output;
+    output += "Welcome to Zork.\n\n";
+    output += "Press - for help \n\n";
+    output += "You find yourself on a worn path in front of a wooden door.\n";
+    output += currentRoom->longDescription();
+    return output;
 }
 
 string ZorkUL::printEnd() {
@@ -155,6 +151,7 @@ string ZorkUL::go(string direction) {
         return "There is no way foward in that direction.";
     } else {
         currentRoom = nextRoom;
+
         return currentRoom->longDescription();
     }
 }

@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <algorithm>
+#include <string>
 
 template <typename T>
 void addItem(vector<T> v, T t) {
@@ -19,6 +20,63 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
 MainWindow::~MainWindow() {
     delete ui;
+}
+
+void MainWindow::enableButtons() {
+    ui->upButton->setEnabled(true);
+    ui->rightButton->setEnabled(true);
+    ui->downButton->setEnabled(true);
+    ui->leftButton->setEnabled(true);
+    ui->aButton->setEnabled(true);
+    ui->bButton->setEnabled(true);
+    ui->xButton->setEnabled(true);
+    ui->yButton->setEnabled(true);
+    ui->selectButton->setEnabled(true);
+    ui->startButton->setEnabled(true);
+
+    ui->listWidget->setEnabled(false);
+}
+
+void MainWindow::disableButtons() {
+    ui->upButton->setEnabled(false);
+    ui->rightButton->setEnabled(false);
+    ui->downButton->setEnabled(false);
+    ui->leftButton->setEnabled(false);
+    ui->aButton->setEnabled(false);
+    ui->bButton->setEnabled(false);
+    ui->xButton->setEnabled(false);
+    ui->yButton->setEnabled(false);
+    ui->selectButton->setEnabled(false);
+    ui->startButton->setEnabled(true);
+
+    ui->listWidget->setEnabled(false);
+}
+
+void MainWindow::reset() {
+    enableButtons();
+    character.health = 5;
+    character.stamina = 5;
+    ui->textEdit_2->setText(QString::fromStdString(displayHealth()));
+    ui->textEdit_3->setText(QString::fromStdString(displayStamina()));
+
+/*
+    addItem(a.itemsInRoom, m);
+    character.removeItem(m);
+    addItem(b.itemsInRoom, m);
+    character.removeItem(m);
+    addItem(a.itemsInRoom, m);
+    character.removeItem(m);
+    addItem(a.itemsInRoom, m);
+    character.removeItem(m);
+    addItem(a.itemsInRoom, m);
+    character.removeItem(m);
+    addItem(a.itemsInRoom, m);
+    character.removeItem(m);
+
+    ui->listWidget->clear();
+
+    currentRoom = c;
+*/
 }
 
 void MainWindow::on_upButton_clicked() { // 1
@@ -40,21 +98,17 @@ void MainWindow::on_aButton_clicked() { // 6
     listItems(items, "room");
 }
 void MainWindow::on_bButton_clicked() { // 2
-    ui->textEdit->setText("Pressed B");
+    ui->textEdit->setText("pressed B");
 }
 void MainWindow::on_xButton_clicked() { // 9
-    putInInventory = false;
-    //vector<Item> items = character.itemsInCharacter;
-    vector<Item> items = character.viewItems();
-    listItems(items, "character");
+    ui->textEdit->setText(QString::fromStdString(character.longDescription() + "\n"));
 }
 void MainWindow::on_yButton_clicked() { // 10
     ui->textEdit->setText(QString::fromStdString(zork->map() + "\n"));
 }
 
 void MainWindow::on_startButton_clicked() { // 8
-    ui->textEdit->setText("Pressed Start");
-
+    reset();
 }
 void MainWindow::on_selectButton_clicked() { // 7
     ui->textEdit->setText(QString::fromStdString(zork->printHelp() + "\n"));
@@ -74,7 +128,6 @@ void MainWindow::on_listWidget_itemDoubleClicked(QListWidgetItem*item) {
         character.addItem(&m);
         r.removeItem(m);
         ui->textEdit->setText(QString::fromStdString(description + " has been added to your inventory.\n"));
-        overencumberedTest();
     }
     else {
         Item m = character.findItem(i);
@@ -111,18 +164,7 @@ void MainWindow::addItemsToListWidget(vector<Item> items) {
 }
 
 void MainWindow::endGameState(string message1, string message2){
-    ui->upButton->setEnabled(false);
-    ui->rightButton->setEnabled(false);
-    ui->downButton->setEnabled(false);
-    ui->leftButton->setEnabled(false);
-    ui->aButton->setEnabled(false);
-    ui->bButton->setEnabled(false);
-    ui->xButton->setEnabled(false);
-    ui->yButton->setEnabled(false);
-    ui->selectButton->setEnabled(false);
-    ui->startButton->setEnabled(false);
-
-    ui->listWidget->setEnabled(false);
+    disableButtons();
 
     ui->textEdit->setText(QString::fromStdString(character.description + " has " + message1 + ". You have " + message2 + " the game.\n"));
 
@@ -130,12 +172,6 @@ void MainWindow::endGameState(string message1, string message2){
     character.health = 0;
     ui->textEdit_2->setText(QString::fromStdString(displayHealth()));
     ui->textEdit_3->setText(QString::fromStdString(displayStamina()));
-}
-
-void MainWindow::overencumberedTest() {
-    if (character.isOverencumbered(4.0)) {
-        endGameState("been overencumberd", "lost");
-    }
 }
 
 void MainWindow::goRoom(string direction) {
@@ -155,7 +191,7 @@ void MainWindow::goRoom(string direction) {
         }
     }
     else {
-        endGameState("ran out of health", "lost");
+        endGameState("died of exhaustion", "lost");
     }
 }
 
@@ -197,4 +233,3 @@ void MainWindow::printCharacterStats() {
         ui->textEdit_3->setText(QString::fromStdString(displayStamina()));
     }
 }
-
