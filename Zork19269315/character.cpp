@@ -30,20 +30,9 @@ string Character::longDescription() {
     string output = "";
 
     output += this->description;
-    output += "\n  ________   ";
-    output += "\n  |  |    |    |   ";
-    output += "\n  |     |      |   ";
-    output += "\n  _______   ";
-    output += "\n------|------";
-    output += "\n        |      ";
-    output += "\n        |      ";
-    output += "\n        |      ";
-    output += "\n        |      ";
-    output += "\n    __|__    ";
-    output += "\n    |       |    ";
-    output += "\n    |       |    ";
-    output += "\n    |       |    ";
-    output += "\n    |       |    \n";
+    output += "\n   O";
+    output += "\n   T";
+    output += "\n   ^";
 
     if (itemsInCharacter.empty()) {
         output += "\nYou are carrying no items.";

@@ -1,0 +1,11 @@
+debug/main.o
+debug/mainwindow.o
+debug/character.o
+debug/command.o
+debug/commandwords.o
+debug/item.o
+debug/room.o
+debug/zorkul.o
+debug/weapon.o
+debug/qrc_res.o
+debug/moc_mainwindow.o

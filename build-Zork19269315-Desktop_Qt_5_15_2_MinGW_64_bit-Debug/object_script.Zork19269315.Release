@@ -1,0 +1,11 @@
+release/main.o
+release/mainwindow.o
+release/character.o
+release/command.o
+release/commandwords.o
+release/item.o
+release/room.o
+release/zorkul.o
+release/weapon.o
+release/qrc_res.o
+release/moc_mainwindow.o

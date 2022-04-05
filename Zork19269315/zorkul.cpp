@@ -31,7 +31,6 @@ void ZorkUL::createRooms() {
     g = new Room("Bathroom");
         g->addItem(new Item("Soap", 4, 44));
         g->addItem(new Item("Towel", 4, 44));
-        g->addItem(new Item("Roll of toilet paper", 4, 44));
     h = new Room("Kitchen");
         h->addItem(new Item("Knife", 4, 44));
         h->addItem(new Item("Spatula", 4, 44));

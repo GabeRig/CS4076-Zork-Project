@@ -1,5 +1,5 @@
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
+#ifndef MAINWINDOW_H_
+#define MAINWINDOW_H_
 
 #include <QMainWindow>
 #include <QListWidget>
@@ -31,7 +31,7 @@ public:
 private:
     Ui::MainWindow *ui;
     ZorkUL *zork = new ZorkUL();
-    Character character = *new Character("Durgrax");
+    Character character = *new Character("Player");
     bool putInInventory;
     void goRoom(string direction);
     void listItems(vector<Item> items, QString description);

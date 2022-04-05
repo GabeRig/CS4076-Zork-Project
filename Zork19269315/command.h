@@ -17,4 +17,4 @@ public:
     bool hasSecondWord();
 };
 
-#endif /*COMMAND_H_*/
+#endif // COMMAND_H_
