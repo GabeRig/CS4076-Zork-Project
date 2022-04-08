@@ -84,13 +84,14 @@ string ZorkUL::printHelp() {
     string output;
     output += "Dpad  Movement\n";
     output += "---------------------------\n";
-    output += "A   Grab Item\n";
-    output += "B   Drop Item\n";
+    output += "A   Show Items\n";
+    output += "B   Hide Items\n";
     output += "X   Character\n";
     output += "Y   Map\n";
     output += "---------------------------\n";
     output += "+  Pause\n";
-    output += "-    Help";
+    output += "-    Help\n";
+    output += "Double click to pick up items";
     return output;
 }
 

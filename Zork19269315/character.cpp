@@ -41,7 +41,7 @@ string Character::longDescription() {
         output += "\nItem List:\n";
 
         for (vector<Item>::iterator i = itemsInCharacter.begin(); i != itemsInCharacter.end(); i++) {
-            output += "\t" + (*i).getLongDescription() + "\n";
+            output += (*i).getShortDescription() + ", ";
         }
     }
 

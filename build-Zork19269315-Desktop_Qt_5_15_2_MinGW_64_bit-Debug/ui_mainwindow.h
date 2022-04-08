@@ -40,6 +40,7 @@ public:
     QPushButton *xButton;
     QPushButton *yButton;
     QTextEdit *textEdit_4;
+    QTextEdit *textEdit_5;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -137,7 +138,7 @@ public:
 "border: none;"));
         listWidget = new QListWidget(centralwidget);
         listWidget->setObjectName(QString::fromUtf8("listWidget"));
-        listWidget->setGeometry(QRect(260, 140, 82, 67));
+        listWidget->setGeometry(QRect(260, 163, 82, 44));
         listWidget->setStyleSheet(QString::fromUtf8("background-color: rgb(103, 151, 72);\n"
 "color: rgb(0, 0, 0);\n"
 "border: none;"));
@@ -162,6 +163,12 @@ public:
 "border: none;\n"
 ""));
         textEdit_4->setReadOnly(true);
+        textEdit_5 = new QTextEdit(centralwidget);
+        textEdit_5->setObjectName(QString::fromUtf8("textEdit_5"));
+        textEdit_5->setGeometry(QRect(260, 142, 82, 21));
+        textEdit_5->setStyleSheet(QString::fromUtf8("background-color: rgb(103, 151, 72);\n"
+"color: rgb(0, 0, 0);\n"
+"border: none;"));
         MainWindow->setCentralWidget(centralwidget);
         Background->raise();
         upButton->raise();
@@ -175,10 +182,11 @@ public:
         bButton->raise();
         textEdit_2->raise();
         textEdit_3->raise();
-        listWidget->raise();
         xButton->raise();
         yButton->raise();
+        textEdit_5->raise();
         textEdit_4->raise();
+        listWidget->raise();
 
         retranslateUi(MainWindow);
 
@@ -203,7 +211,7 @@ public:
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:36pt; color:#737373;\">PAUSED</span></p></body></html>", nullptr));
+"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>", nullptr));
     } // retranslateUi
 
 };

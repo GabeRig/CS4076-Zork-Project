@@ -17,6 +17,7 @@ class MainWindow : public QMainWindow {
     friend class Room;
 
 public:
+
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
     void overencumberedTest();
@@ -31,14 +32,14 @@ public:
 private:
     Ui::MainWindow *ui;
     ZorkUL *zork = new ZorkUL();
-    Character character = *new Character("Player");
+    Character character = *new Character("Player"); 
     int pause;
+    int showingItems;
     bool putInInventory;
     void goRoom(string direction);
     void listItems(vector<Item> items, QString description);
     void disableButtons();
     void enableButtons();
-    void reset();
 
 private slots:
     void on_upButton_clicked();

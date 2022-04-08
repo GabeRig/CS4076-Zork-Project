@@ -66,12 +66,16 @@ void MainWindow::on_leftButton_clicked() { // 4
 }
 
 void MainWindow::on_aButton_clicked() { // 6
+    ui->textEdit_5->setText("Items in room:");
     putInInventory = true;
     vector<Item> items = zork->getCurrentRoom().viewItems();
     listItems(items, "room");
+    showingItems = 1;
 }
 void MainWindow::on_bButton_clicked() { // 2
-    ui->textEdit->setText("pressed B");
+    ui->textEdit_5->setText("");
+    ui->listWidget->takeItem(0);
+    showingItems = 0;
 }
 void MainWindow::on_xButton_clicked() { // 9
     ui->textEdit->setText(QString::fromStdString(character.longDescription() + "\n"));
@@ -83,12 +87,14 @@ void MainWindow::on_yButton_clicked() { // 10
 void MainWindow::on_startButton_clicked() { // 8
         if (pause == 1) {
             enableButtons();
+            ui->listWidget->raise();
             pause = 0;
             ui->textEdit_4->setStyleSheet("QTextEdit { background-color : rgba(40, 60, 30, 0); }");
             ui->textEdit_4->setText("");
         }
         else {
             disableButtons();
+            ui->listWidget->lower();
             pause = 1;
             ui->textEdit_4->setStyleSheet("QTextEdit { background-color : rgba(40, 60, 30, 200); }");
             ui->textEdit_4->setHtml("<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:36pt; color:#737373;\">PAUSED</span></p></body></html>");
