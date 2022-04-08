@@ -10,10 +10,6 @@ void addItem(vector<T> v, T t) {
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow) {
     ui->setupUi(this);
-
-    ui->textEdit_2->setTextColor(QColor("red"));
-    ui->textEdit_3->setTextColor(QColor("red"));
-
     ui->textEdit->setText(QString::fromStdString(zork->printWelcome() + "\n"));
     printCharacterStats();
 }
@@ -33,7 +29,6 @@ void MainWindow::enableButtons() {
     ui->yButton->setEnabled(true);
     ui->selectButton->setEnabled(true);
     ui->startButton->setEnabled(true);
-
     ui->listWidget->setEnabled(false);
 }
 
@@ -48,7 +43,6 @@ void MainWindow::disableButtons() {
     ui->yButton->setEnabled(false);
     ui->selectButton->setEnabled(false);
     ui->startButton->setEnabled(true);
-
     ui->listWidget->setEnabled(false);
 }
 
@@ -101,7 +95,7 @@ void MainWindow::on_startButton_clicked() { // 8
         }
 }
 void MainWindow::on_selectButton_clicked() { // 7
-    ui->textEdit->setText(QString::fromStdString(zork->printHelp() + "\n"));
+    ui->textEdit->setText(QString::fromStdString(zork->printHelp()));
 }
 
 void MainWindow::on_listWidget_itemDoubleClicked(QListWidgetItem*item) {
